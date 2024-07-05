@@ -44,7 +44,7 @@ namespace PruebaRedarbor.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<ActionResult<CompaniesDto>> Create(CreateEmployeeCommand command)
+        public async Task<ActionResult<CompaniesDto>> Create(CreateCompanyCommand command)
         {
             var companyItem = await _mediator.Send(command);
             return CreatedAtAction(nameof(GetById), new { id = companyItem.Id}, companyItem);
