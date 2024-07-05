@@ -231,4 +231,4 @@ La API proporciona endpoints para gestionar los recursos de Employee, Status, Co
 
 - La base de datos de pruebas se utiliza automáticamente para ejecutar los tests, asegurando que los datos de producción no se vean afectados.
 
-En la siguiente ruta: <b>PruebaTecnicaCompu\TestUnitPruebaRedarbor\Shared\TestApi.cs</b>, está definida la variable token. Si en algún test aparece un error 401, la razón es que el token ha vencido. Deberás volver a crear el token para usar los endpoints protegidos.
+- En la siguiente ruta: <b>PruebaTecnicaCompu\TestUnitPruebaRedarbor\Shared\TestApi.cs</b>, está definida la variable token. Si en algún test aparece un error 401, la razón es que el token ha vencido. Deberás volver a crear el token para usar los endpoints protegidos.
