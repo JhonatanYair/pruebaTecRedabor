@@ -10,11 +10,11 @@ using TestUnitPruebaRedarbor.Shared;
 
 namespace TestUnitPruebaRedarbor.CodeTests.Employee
 {
-    public class TestDeleteStatus : IClassFixture<CustomWebApplicationFactory<Program>>
+    public class TestDeleteEmployee : IClassFixture<CustomWebApplicationFactory<Program>>
     {
         private readonly HttpClient _client;
 
-        public TestDeleteStatus(CustomWebApplicationFactory<Program> factory)
+        public TestDeleteEmployee(CustomWebApplicationFactory<Program> factory)
         {
             _client = factory.CreateClient();
         }
@@ -22,7 +22,7 @@ namespace TestUnitPruebaRedarbor.CodeTests.Employee
         [Fact]
         public async Task Execute()
         {
-            var response = await _client.DeleteAsync($"{TestApi.urlEndpoint}/Status/3");
+            var response = await _client.DeleteAsync($"{TestApi.urlEndpoint}/Employee/3");
             response.EnsureSuccessStatusCode();
 
             // Verificar el código de estado
