@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+    sqlserver:
+      build:
+        context: .
+        dockerfile: ./SqlServer/Dockerfile
+      ports:
+        - "1435:1433"
+
+    redarborbackend:
+      build:
+        context: ./PruebaRedarbor
+        dockerfile: ./Dockerfile
+      ports:
+        - "8086:80"
+      depends_on:
+        - sqlserver
+      environment:
+        - ASPNETCORE_ENVIRONMENT=Docker

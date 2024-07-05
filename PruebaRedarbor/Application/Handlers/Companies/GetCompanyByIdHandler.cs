@@ -1,0 +1,40 @@
+﻿using MediatR;
+using PruebaRedarbor.Application.DTOs;
+using PruebaRedarbor.Infrastruture;
+using PruebaRedarbor.Infrastruture.Queries.Companies;
+using PruebaRedarbor.Repositories;
+using System.Linq.Expressions;
+
+namespace PruebaRedarbor.Application.Handlers.Companies
+{
+    public class GetCompanyByIdHandler : IRequestHandler<GetCompanyByQuery, CompaniesDto>
+    {
+        private readonly PruebaRebardorContext _context;
+        private readonly IRepository<Domain.Models.Companies> repository;
+
+        public GetCompanyByIdHandler(PruebaRebardorContext context)
+        {
+            _context = context;
+            repository = new Repository<Domain.Models.Companies>(_context);
+        }
+
+        public async Task<CompaniesDto> Handle(GetCompanyByQuery request, CancellationToken cancellationToken)
+        {
+            Expression<Func<Domain.Models.Companies, bool>> query = p => p.Id == request.Id;
+
+            var companyItem = await repository.ListRecords(cancellationToken, query);
+
+            if (companyItem == null)
+            {
+                return null;
+            }
+
+            return new CompaniesDto
+            {
+                Id = companyItem[0].Id,
+                Name = companyItem[0].Name
+            };
+
+        }
+    }
+}
