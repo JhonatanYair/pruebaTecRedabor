@@ -1,6 +1,6 @@
 # Prueba Técnica con .NET y SQL Server
 
-Este repositorio contiene una prueba técnica que utiliza .NET para el backend y SQL Server para la base de datos. Sigue los pasos a continuación para desplegar y probar la aplicación.
+Este repositorio contiene una prueba técnica que utiliza .NET para el backend y SQL Server para la base de datos, este proeycto utiliza el patron CQRS. Sigue los pasos a continuación para desplegar y probar la aplicación.
 
 ## Despliegue de la Aplicación
 
