@@ -24,13 +24,13 @@ La API proporciona endpoints para gestionar los recursos de Employee, Status, Co
 
 - **Login**
   - **Método:** POST
-  - **URL:** `http://localhost:8083/api/auth/login`
+  - **URL:** `http://localhost:8086/api/Employee/login`
   - **Descripción:** Permite iniciar sesión para obtener acceso a los endpoints protegidos.
   - **Body:**
     ```json
     {
-        "username": "example_user",
-        "password": "password123"
+        "email": "usuario1@gmail.com",
+        "password": "enter12345"
     }
     ```
 
@@ -38,49 +38,59 @@ La API proporciona endpoints para gestionar los recursos de Employee, Status, Co
 
 - **Listar todos los empleados**
   - **Método:** GET
-  - **URL:** `http://localhost:8083/api/employee/list`
+  - **URL:** `http://localhost:8086/api/Employee`
   - **Descripción:** Obtiene todos los empleados registrados.
   - **Autenticación:** Requiere token JWT.
 
 - **Obtener empleado por ID**
   - **Método:** GET
-  - **URL:** `http://localhost:8083/api/employee/{id}`
+  - **URL:** `http://localhost:8086/api/Employee/{id}`
   - **Descripción:** Obtiene un empleado específico por su ID.
   - **Autenticación:** Requiere token JWT.
 
 - **Crear nuevo empleado**
   - **Método:** POST
-  - **URL:** `http://localhost:8083/api/employee/create`
+  - **URL:** `http://localhost:8086/api/Employee`
   - **Descripción:** Crea un nuevo empleado.
-  - **Autenticación:** Requiere token JWT.
   - **Body:**
     ```json
     {
-        "name": "Nombre del Empleado",
-        "email": "email@example.com",
-        "role": "Developer",
-        "companyId": 1
+      "name": "Nombre del Empleado",
+      "email": "email@example.com",
+      "telephone": "300000000",
+      "fax": "Fax",
+      "password": "password",
+      "portalId": 1,
+      "companyId": 1,
+      "roleId": 1,
+      "statusId": 1
     }
     ```
 
 - **Actualizar empleado**
   - **Método:** PUT
-  - **URL:** `http://localhost:8083/api/employee/update/{id}`
+  - **URL:** `http://localhost:8086/api/Employee/{id}`
   - **Descripción:** Actualiza un empleado existente por su ID.
   - **Autenticación:** Requiere token JWT.
   - **Body:**
     ```json
     {
-        "name": "Nuevo Nombre",
-        "email": "nuevo_email@example.com",
-        "role": "Analyst",
-        "companyId": 2
+      "id": 1,
+      "name": "Nombre del Empleado editado",
+      "email": "email@example.com",
+      "telephone": "300000000",
+      "fax": "Fax",
+      "password": "password",
+      "portalId": 1,
+      "companyId": 1,
+      "roleId": 1,
+      "statusId": 1
     }
     ```
 
 - **Eliminar empleado**
   - **Método:** DELETE
-  - **URL:** `http://localhost:8083/api/employee/delete/{id}`
+  - **URL:** `http://localhost:8086/api/Employee/{id}`
   - **Descripción:** Elimina un empleado por su ID.
   - **Autenticación:** Requiere token JWT.
 
@@ -88,31 +98,135 @@ La API proporciona endpoints para gestionar los recursos de Employee, Status, Co
 
 - **Listar todos los estados**
   - **Método:** GET
-  - **URL:** `http://localhost:8083/api/status/list`
+  - **URL:** `http://localhost:8086/api/Status`
   - **Descripción:** Obtiene todos los estados disponibles.
+
+- **Obtener estado por ID**
+  - **Método:** GET
+  - **URL:** `http://localhost:8086/api/Status/{id}`
+  - **Descripción:** Obtiene un estado específico por su ID.
+
+- **Crear nuevo estado**
+  - **Método:** POST
+  - **URL:** `http://localhost:8086/api/Status`
+  - **Descripción:** Crea un nuevo estado.
+  - **Body:**
+    ```json
+    {
+      "name": "Nombre del Estado",
+    }
+    ```
+
+- **Actualizar estado**
+  - **Método:** PUT
+  - **URL:** `http://localhost:8086/api/Status/{id}`
+  - **Descripción:** Actualiza un estado existente por su ID.
+  - **Body:**
+    ```json
+    {
+      "id": 1,
+      "name": "Nombre del Estado editado",
+    }
+    ```
+
+- **Eliminar estado**
+  - **Método:** DELETE
+  - **URL:** `http://localhost:8086/api/Status/{id}`
+  - **Descripción:** Elimina un estado por su ID.
   - **Autenticación:** Requiere token JWT.
 
 ### Company
 
 - **Listar todas las compañías**
   - **Método:** GET
-  - **URL:** `http://localhost:8083/api/company/list`
+  - **URL:** `http://localhost:8086/api/Company`
   - **Descripción:** Obtiene todas las compañías registradas.
+  - **Autenticación:** Requiere token JWT.
+
+  - **Obtener compañía por ID**
+  - **Método:** GET
+  - **URL:** `http://localhost:8086/api/Company/{id}`
+  - **Descripción:** Obtiene una compañía específico por su ID.
+  - **Autenticación:** Requiere token JWT.
+
+- **Crear nuevo compañía**
+  - **Método:** POST
+  - **URL:** `http://localhost:8086/api/Company`
+  - **Descripción:** Crea una nueva compañía.
+  - **Autenticación:** Requiere token JWT.
+  - **Body:**
+    ```json
+    {
+      "name": "Nombre de la compañía",
+    }
+    ```
+
+- **Actualizar compañía**
+  - **Método:** PUT
+  - **URL:** `http://localhost:8086/api/Company/{id}`
+  - **Descripción:** Actualiza una compañía existente por su ID.
+  - **Autenticación:** Requiere token JWT.
+
+  - **Body:**
+    ```json
+    {
+      "id": 1,
+      "name": "Nombre de la compañía editada",
+    }
+    ```
+
+- **Eliminar compañía**
+  - **Método:** DELETE
+  - **URL:** `http://localhost:8086/api/Company/{id}`
+  - **Descripción:** Elimina una compañía por su ID.
   - **Autenticación:** Requiere token JWT.
 
 ### Rol
 
 - **Listar todos los roles**
   - **Método:** GET
-  - **URL:** `http://localhost:8083/api/role/list`
+  - **URL:** `http://localhost:8086/api/Rol`
   - **Descripción:** Obtiene todos los roles disponibles.
+  - **Autenticación:** Requiere token JWT.
+
+    - **Obtener rol por ID**
+  - **Método:** GET
+  - **URL:** `http://localhost:8086/api/Rol/{id}`
+  - **Descripción:** Obtiene un rol específico por su ID.
+  - **Autenticación:** Requiere token JWT.
+
+- **Crear nuevo roles**
+  - **Método:** POST
+  - **URL:** `http://localhost:8086/api/Rol`
+  - **Descripción:** Crea un nuevo roles.
+  - **Autenticación:** Requiere token JWT.
+  - **Body:**
+    ```json
+    {
+      "name": "Nombre del rol",
+    }
+    ```
+
+- **Actualizar rol**
+  - **Método:** PUT
+  - **URL:** `http://localhost:8086/api/Rol/{id}`
+  - **Descripción:** Actualiza un rol existente por su ID.
+  - **Autenticación:** Requiere token JWT.
+
+  - **Body:**
+    ```json
+    {
+      "id": 1,
+      "name": "Nombre del rol editada",
+    }
+    ```
+
+- **Eliminar rol**
+  - **Método:** DELETE
+  - **URL:** `http://localhost:8086/api/Rol/{id}`
+  - **Descripción:** Elimina un rol por su ID.
   - **Autenticación:** Requiere token JWT.
 
 ### Notas adicionales
 
 - La base de datos de pruebas se utiliza automáticamente para ejecutar los tests, asegurando que los datos de producción no se vean afectados.
-- Todos los endpoints, excepto `login` y `employee/list`, requieren autenticación mediante token JWT.
-
----
-
-Este `README.md` proporciona una guía completa para desplegar la aplicación y utilizar los endpoints de la API, con ejemplos específicos de peticiones HTTP y requisitos de autenticación. Asegúrate de personalizarlo según las necesidades exactas y configuraciones de tu proyecto.
